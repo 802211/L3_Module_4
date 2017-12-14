@@ -1,5 +1,7 @@
 package threads;
 
+import java.awt.Color;
+
 import org.jointheleague.graphical.robot.Robot;
 
 public class OlympicRings_Threaded {
@@ -7,22 +9,6 @@ public class OlympicRings_Threaded {
 	// robot should draw one ring simultaneously with the other 4 robots.
 
 	public static void main(String[] args) {
-		// Thread t1 = new Thread(() -> {
-		// for (int i = 0; i < 1000000; i++) {
-		// System.out.println(i);
-		// }
-		// });
-		// t1.start();
-		//
-		// Thread t2 = new Thread(() -> {
-		// Robot r = new Robot();
-		// for (int i = 0; i < 1000; i++) {
-		// r.turn(100);
-		// }
-		//
-		// });
-		// t2.start();
-
 		Robot one = new Robot(200, 200);
 		Robot two = new Robot(300, 400);
 		Robot three = new Robot(400, 200);
@@ -35,13 +21,71 @@ public class OlympicRings_Threaded {
 		four.setSpeed(10);
 		five.setSpeed(10);
 
-		Thread t1 = new Thread(() -> {
-			for (int i = 0; i < 10000; i++) {
-				one.move(10);
-				one.turn(10);
-			}
+		one.penDown();
+		two.penDown();
+		three.penDown();
+		four.penDown();
+		five.penDown();
 
+		one.setPenColor(Color.blue);
+		two.setPenColor(Color.yellow);
+		three.setPenColor(Color.black);
+		four.setPenColor(Color.GREEN);
+		five.setPenColor(Color.RED);
+
+		one.setPenWidth(25);
+		two.setPenWidth(25);
+		three.setPenWidth(25);
+		four.setPenWidth(25);
+		five.setPenWidth(25);
+
+		Thread t1 = new Thread(() -> {
+			for (int i = 0; i < 90; i++) {
+				one.turn(4);
+				one.move(10);
+			}
 		});
+		t1.start();
+
+		Thread t2 = new Thread(() -> {
+			for (int i = 0; i < 90; i++) {
+				two.turn(4);
+				two.move(10);
+			}
+		});
+		t2.start();
+
+		Thread t3 = new Thread(() -> {
+			for (int i = 0; i < 90; i++) {
+				three.turn(4);
+				three.move(10);
+			}
+		});
+		t3.start();
+
+		Thread t4 = new Thread(() -> {
+			for (int i = 0; i < 90; i++) {
+				four.turn(4);
+				four.move(10);
+			}
+		});
+		t4.start();
+
+		Thread t5 = new Thread(() -> {
+			for (int i = 0; i < 90; i++) {
+				five.turn(4);
+				five.move(10);
+			}
+		});
+		t5.start();
+
+		// Thread t1 = new Thread(() -> {
+		// for (int i = 0; i < 10000; i++) {
+		// one.move(10);
+		// one.turn(10);
+		// }
+		//
+		// });
 
 	}
 
