@@ -86,7 +86,7 @@ public class BruteForceCracker {
 			}
 		});
 		
-	
+		startTime = System.currentTimeMillis();
 		t1.start();
 		t2.start();
 		t3.start();
@@ -94,7 +94,7 @@ public class BruteForceCracker {
 		t5.start();
 
 		//System.out.println("Starting Brute Force Checker! :)");
-		startTime = System.currentTimeMillis();
+	
 
 		try {
 			t1.join();
